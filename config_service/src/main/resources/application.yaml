@@ -1,0 +1,13 @@
+server:
+  port: 8081
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          default-label: main
+          uri: https://github.com/santi280403/Microservices_Java
+          search-paths: config-data
+          skipSslValidation: true
+  application:
+    name: config-service
