@@ -1,4 +1,4 @@
-package com.microservies.config_service;
+package com.microservices.configservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
