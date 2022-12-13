@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.microservices.user_service.models.Car;
 
-@FeignClient(name = "car-service", url = "http://localhost:8002")
+@FeignClient(name = "car-service")
 public interface CarFeignClient {
   @RequestMapping(method = RequestMethod.POST, value = "/car")
   Car save(@RequestBody Car car);
