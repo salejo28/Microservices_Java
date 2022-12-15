@@ -32,11 +32,11 @@ public class AuthUserService {
 
   public AuthUser save(AuthUserDto dto) {
     Optional<AuthUser> user = authUserRepository.findByUsername(dto.getUsername());
-    if (!user.isPresent())
+    if (user.isPresent())
       return null;
     String password = passwordEncoder.encode(dto.getPassword());
     AuthUser authUser = AuthUser.builder().username(dto.getUsername()).password(password).build();
-    return authUser;
+    return authUserRepository.save(authUser);
   }
 
   public TokenDto login(AuthUserDto dto) {
