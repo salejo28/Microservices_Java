@@ -31,10 +31,9 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> 
       String tokenHeader = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
       if (!tokenHeader.contains("Bearer"))
         return onError(exchange, HttpStatus.BAD_REQUEST);
-      String token = tokenHeader.replace("Bearer ", "");
       return wBuilder.build()
           .post()
-          .uri("http://auth-service/auth/validate?token=" + token)
+          .uri("http://auth-service/auth/token/validate").header("Authorization", tokenHeader)
           .retrieve().bodyToMono(TokenDto.class)
           .map(t -> {
             t.getToken();
