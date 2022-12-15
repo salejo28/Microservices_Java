@@ -23,6 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     Optional<AuthUser> user = authUserRepository.findByUsername(username);
     if (!user.isPresent())
       throw new UsernameNotFoundException("User not found");
+    /* TODO: IMPL roles */
     return new User(user.get().getUsername(), user.get().getPassword(), null);
   }
 
